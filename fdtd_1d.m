@@ -211,11 +211,24 @@ function fdtd = fdtd_run(layers, length_unit, f_max)
 
   eplot = plot(Ey, "-b");
   hplot = plot(Hx, "-r");
-  title("fields");
+  title("fields 2D");
   xlabel("z");
   ylabel("field");
   axis([1 Nz -2 2]);
   legend([eplot hplot], {"E", "H"}, "location", "southoutside");
+
+  %figure 1;
+  %box on;
+  %hold on;
+  %view(3);
+  %eplot3d = plot3(zeros(1, Nz), Ey, [1:Nz]);
+  %hplot3d = plot3(Hx, zeros(1, Nz), [1:Nz]);
+  %title("fields 3D")
+  %xlabel("H");
+  %ylabel("E");
+  %zlabel("z");
+  %axis([-2 2 -2 2 1 Nz]);
+  %legend("E", "H");
 
   % SIMULATION
 
@@ -276,6 +289,8 @@ function fdtd = fdtd_run(layers, length_unit, f_max)
       % update figure
       set(eplot, "YData", Ey);
       set(hplot, "YData", Hx);
+      %set(eplot3d, "YData", Ey);
+      %set(hplot3d, "XData", Hx);
       drawnow();
       throughput = floor(1/(etime(clock(), t0)/update_freq));
       remaining_seconds = floor((STEPS-T)/throughput);

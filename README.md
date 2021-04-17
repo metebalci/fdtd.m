@@ -16,6 +16,8 @@ The implementations are as follows:
 
 During the simulation, a plot showing Ey and Hx waves are updated in real-time, the layers of the structure are also shown in gray colors in this plot. At the end of the simulation, fourier (frequency) analysis results are also plotted.
 
+There is also a simple 3D plot functionality but it is commented out.
+
 Below are plots while and at the end of running fdtd_demo3:
 
 ![Waves](fdtd_1d_demo3_t.png)
