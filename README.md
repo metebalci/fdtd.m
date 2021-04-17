@@ -1,6 +1,6 @@
 # fdtd.m
 
-This repo contains FDTD EM Solver Implementations I created using Octave while I was following the lectures of [Dr. Raymond Rumpf](https://empossible.net/).
+This repo contains FDTD EM Solver Implementations I created using MATLAB while I was following the lectures of [Dr. Raymond Rumpf](https://empossible.net/).
 
 The implementations are as follows:
 
@@ -30,6 +30,8 @@ There are two optimizations in the implementation comparing to the lectures:
 
 - The inner E and H update iterations (in space) are replaced by vectoral implementations. This is obviously faster.
 
+- Update coefficients mEy and mHx are also divided by dz since this is also a loop-invariant.
+
 - Fourier kernels (K) are pre-computed but also multiplied at each time iteration (Kc) in order to not run power operation (^T) as in the lectures.
 
 - Fourier calculation iterations (in frequency) are also replaced by vectoral implementations.
@@ -38,19 +40,8 @@ There are two optimizations in the implementation comparing to the lectures:
 
 ## Demos
 
-Three demos (also based on the examples from the lectures) are provided:
+There are three demos (also based on the examples from the lectures):
 
 - fdtd_demo1: single region
 - fdtd_demo2: anti-reflection layers
 - fdtd_demo3: bragg gratings
-
-## How to use
-
-- Run fdtd_1d first.
-- Then either run fdtd_demo functions directly or fdtd_run function yourself.
-
-fdtd_run parameters are:
-
-- layers: Nx3 matrix for N layers, each row contains one layer with [thickness dielectric_constant relative_permeability]
-- length_unit: the unit used in the layers structure, e.g. if you are using mm then provide 1e-3 here
-- f_max: maximum frequency to simulate, used for preparing the source and fourier analysis
